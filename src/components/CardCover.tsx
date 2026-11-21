@@ -1,0 +1,37 @@
+import { mediaPath } from '../data/album'
+import { PaperConfetti } from './PaperConfetti'
+
+const decorPath = (filename: string) => `${import.meta.env.BASE_URL}decor/${filename}`
+
+export function CardCover({ onOpen }: { onOpen: () => void }) {
+  return (
+    <main className="card-cover">
+      <div className="cover-composition">
+        <PaperConfetti placement="cover" />
+        <img className="cover-decor cover-decor--balloon" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--balloons" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--ribbon-left" src={decorPath('ribbon-long.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--ribbon-right" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" />
+        <figure className="cover-polaroid">
+          <img className="cover-polaroid__pushpin" src={decorPath('terracotta-pushpin.svg')} alt="" aria-hidden="true" />
+          <img src={mediaPath('polina-01.jpg')} alt="Полина" />
+          <figcaption>♡ Полина ♡</figcaption>
+        </figure>
+        <div className="cover-copy">
+          <h1>С днём<br />рождения!</h1>
+          <span className="cover-brush" aria-hidden="true">
+            <svg className="cover-brush__paint" viewBox="0 0 290 54" focusable="false">
+              <path d="M9 29L46 20 40 25 108 11 103 16 179 7 171 12 267 3 261 10 285 9 274 18 283 21 244 28 250 31 174 37 180 40 94 46 103 41 23 51 29 44 4 46 17 37 7 37Z" fill="#b4a4bd" opacity=".64" />
+              <path d="M23 37Q153 12 276 13M34 44Q158 23 265 22" fill="none" stroke="#fff2de" strokeWidth="1.5" opacity=".5" />
+            </svg>
+          </span>
+          <button className="cover-open" type="button" onClick={onOpen}>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5h18v12H3zM3.5 7l8.5 7 8.5-7" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>
+            <span>Открыть поздравление</span>
+          </button>
+        </div>
+        <img className="cover-decor cover-decor--gift" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
+      </div>
+    </main>
+  )
+}
