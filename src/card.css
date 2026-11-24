@@ -557,9 +557,6 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
 .cover-polaroid .cover-polaroid__pushpin{position:absolute;z-index:4;left:30%;top:-21px;width:33px;height:33px;max-width:none;object-fit:contain;transform:translateX(-50%) rotate(-4deg);filter:drop-shadow(1px 2px 1px #57332666);pointer-events:none}
 .hand-drawn-flower{stroke:#905543;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
 .collage-note__flower{display:inline-block;width:23px;height:24px;margin-left:1px;vertical-align:-4px;transform:rotate(-8deg)}
-.album-book .album-book__flower{position:absolute;right:48px;width:23px;height:24px;transform:rotate(-8deg);pointer-events:none}
-.album-book__flower--top{top:5.5%}
-.album-book__flower--bottom{top:47%}
 .collage-note{text-align:center}
 .surprise-player__wave{position:relative;height:44px}
 .surprise-player__seek{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:none;appearance:none;-webkit-appearance:none}
@@ -777,12 +774,31 @@ button:focus-visible{outline-color:#927B9D}
 @keyframes vintage-telephone-ring{0%{transform:rotate(-4deg)}100%{transform:rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){.vintage-telephone__button--ringing{animation:none}}
 
-/* Подписи Полины: левая страница детского альбома показывает сердечко или веточку лаванды вместо текста, коллажи получают новые надписи, а слайдер освобождён от заголовка и его верхнего отступа. Механика перелистывания сохранена. */
-.album-book .album-book__emblem{position:absolute;z-index:1;top:35%;left:auto;right:14px;display:block;pointer-events:none;transform:rotate(-7deg);transition:opacity .18s ease}
-.album-book__emblem--heart{color:#927B9D;font:clamp(65px,17vw,110px)/1 Georgia,serif;text-shadow:0 3px 5px #5C526525}
-.album-book .album-book__emblem--lavender{top:30%;width:clamp(70px,21vw,125px);height:auto;opacity:0;transform:rotate(18deg)}
-.album-sequence.is-second .album-book__emblem--heart{opacity:0}
-.album-sequence.is-second .album-book__emblem--lavender{opacity:1}
+/* Левые страницы детского альбома: сердечки и прозрачные веточки привязаны к размерам страницы; у переплёта на телефоне видны несколько деталей каждого разворота. При перелистывании меняется только декоративная композиция. */
+.album-book__composition{position:absolute;inset:0;pointer-events:none;transition:opacity .18s ease}
+.album-book__composition--lavender,.album-sequence.is-second .album-book__composition--hearts{opacity:0}
+.album-sequence.is-second .album-book__composition--lavender{opacity:1}
+.album-book__ornament{position:absolute;display:block;height:auto;object-fit:contain;transform-origin:center;filter:none}
+svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.album-book__heart-sketch{stroke:#B5A3C7;stroke-width:1;opacity:.8}
+.album-book__heart--large{top:18%;right:6%;width:29%;transform:rotate(-11deg)}
+.album-book__heart--small{top:57%;right:23%;width:15%;transform:rotate(14deg)}
+.album-book__heart--middle{top:72%;left:16%;width:22%;transform:rotate(9deg)}
+.album-book__sprig--hearts-top{top:9%;left:12%;width:28%;transform:rotate(-17deg)}
+.album-book__sprig--hearts-bottom{top:70%;right:2%;width:28%;transform:rotate(24deg)}
+.album-book__lavender--bouquet{top:13%;right:2%;width:41%;transform:rotate(12deg)}
+.album-book__lavender--sprig-right{top:66%;right:5%;width:31%;transform:rotate(-14deg)}
+.album-book__lavender--sprig-left{top:43%;left:13%;width:30%;transform:rotate(25deg)}
+.album-book__heart--lavender-right{top:53%;right:22%;width:15%;transform:rotate(17deg)}
+.album-book__heart--lavender-left{top:18%;left:14%;width:18%;transform:rotate(-9deg)}
 .collage .collage-note{max-width:59%;font-size:clamp(17px,4.5vw,24px);line-height:1.12}
 .photo-slider{padding-top:8px}
-@media(prefers-reduced-motion:reduce){.album-book .album-book__emblem{transition:none}}
+@media(max-width:700px){
+  .album-book__heart--large{right:4%;width:32%}
+  .album-book__heart--small{top:51%;right:4%;width:18%}
+  .album-book__sprig--hearts-bottom{right:0;width:31%}
+  .album-book__lavender--bouquet{right:0;width:45%}
+  .album-book__lavender--sprig-right{right:3%;width:34%}
+  .album-book__heart--lavender-right{top:51%;right:5%;width:18%}
+}
+@media(prefers-reduced-motion:reduce){.album-book__composition{transition:none}}

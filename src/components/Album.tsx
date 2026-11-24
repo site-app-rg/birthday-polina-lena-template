@@ -31,6 +31,13 @@ function PhotoPrint({ item, caption, onOpen, className = '' }: { item: AlbumPhot
   )
 }
 
+function AlbumHeart({ className }: { className: string }) {
+  return <svg className={`album-book__ornament ${className}`} viewBox="0 0 80 76" fill="none" aria-hidden="true" focusable="false">
+    <path d="M40 68C25 56 7 44 7 26 7 15 15 8 25 9c8 1 13 7 16 13 4-8 11-14 19-13 10 1 15 9 14 18-1 18-19 31-34 41Z" />
+    <path className="album-book__heart-sketch" d="M13 24c-2 13 8 24 18 33M47 18c6-7 13-8 19-3" />
+  </svg>
+}
+
 function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto' | 'modalOpen'>) {
   const sequenceRef = useRef<HTMLElement>(null)
   const [turn, setTurn] = useState(0)
@@ -73,11 +80,21 @@ function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto
         <img className="album-decor album-decor--ribbon-bottom" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" />
         <div className="album-book" style={{ '--turn-angle': `${-180 * turn}deg` } as CSSProperties}>
           <div className="book-page book-page--left album-book__left">
-            <HandDrawnFlower className="album-book__flower album-book__flower--top" />
-            {/* Левая страница детского альбома: вместо текстовых подписей при перелистывании сменяются сердечко и небольшая веточка лаванды. */}
-            <span className="album-book__emblem album-book__emblem--heart" aria-hidden="true">♡</span>
-            <img className="album-book__emblem album-book__emblem--lavender" src={decorPath('lavender-sprig.webp')} alt="" aria-hidden="true" />
-            <HandDrawnFlower className="album-book__flower album-book__flower--bottom" />
+            {/* Левые страницы детского альбома: два набора сердечек и прозрачной лаванды сменяются вместе с разворотом; часть деталей расположена у переплёта и остаётся видимой на телефоне. */}
+            <div className="album-book__composition album-book__composition--hearts" aria-hidden="true">
+              <AlbumHeart className="album-book__heart--large" />
+              <AlbumHeart className="album-book__heart--small" />
+              <AlbumHeart className="album-book__heart--middle" />
+              <img className="album-book__ornament album-book__sprig--hearts-top" src={decorPath('lavender-sprig.webp')} alt="" />
+              <img className="album-book__ornament album-book__sprig--hearts-bottom" src={decorPath('lavender-sprig.webp')} alt="" />
+            </div>
+            <div className="album-book__composition album-book__composition--lavender" aria-hidden="true">
+              <img className="album-book__ornament album-book__lavender--bouquet" src={decorPath('lavender-bouquet.webp')} alt="" />
+              <img className="album-book__ornament album-book__lavender--sprig-right" src={decorPath('lavender-sprig.webp')} alt="" />
+              <img className="album-book__ornament album-book__lavender--sprig-left" src={decorPath('lavender-sprig.webp')} alt="" />
+              <AlbumHeart className="album-book__heart--lavender-right" />
+              <AlbumHeart className="album-book__heart--lavender-left" />
+            </div>
           </div>
           <div className="book-page book-page--right album-book__under" inert={!secondVisible} aria-hidden={!secondVisible}>
             <PhotoPrint item={childhoodPhotos[2]} onOpen={onOpenPhoto} className="book-photo book-photo--first" />
