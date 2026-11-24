@@ -166,8 +166,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <svg className="envelope-section__arrow" viewBox="0 0 390 430" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="envelope-arrow-outline" x1="0" y1="145" x2="0" y2="214" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#fff2d9" stopOpacity="0" />
-                <stop offset="1" stopColor="#fff2d9" stopOpacity=".95" />
+                <stop stopColor="#FFFCF5" stopOpacity="0" />
+                <stop offset="1" stopColor="#FFFCF5" stopOpacity=".95" />
               </linearGradient>
             </defs>
             <path d="M75 78C20 101 18 164 62 193C87 210 116 214 139 232M139 232l-14-2M139 232l-5-13" fill="none" stroke="url(#envelope-arrow-outline)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />

@@ -663,3 +663,51 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
   .collage__lavender{right:-13%;width:45%}
   .final-letter__lavender{right:-8%;width:29%}
 }
+
+/* Палитра всех экранов открытки Полины: фон, бумага, альбом, управление и модальные окна получают единые цвета Прованса. Геометрия, шрифты, фотографии, декоративные ассеты и анимации не меняются. */
+:root{color:#60564D;background:#F7F1E7}
+button:focus-visible{outline-color:#927B9D}
+.card-cover,.card-story{--cream:#F7F1E7;--paper:#FFFCF5;--peach:#B5A3C7;--terra:#927B9D;--ink:#60564D;color:#60564D}
+.card-cover,.card-story{background:#F7F1E7}
+.cover-composition,.story-paper{background:radial-gradient(circle at 22% 15%,#FFFCF5 0,transparent 36%),radial-gradient(circle at 92% 72%,#DFD2BD66 0,transparent 40%),repeating-linear-gradient(101deg,transparent 0 5px,#60564D08 5px 6px),#F7F1E7;box-shadow:0 0 55px #5C52651b}
+.cover-polaroid,.photo-print,.surprise-card__photo{background:#FFFCF5;color:#60564D;box-shadow:0 15px 24px #5C526538,0 2px 5px #5C526526}
+.cover-polaroid figcaption,.cover-copy h1,.album-book .album-book__caption,.collage-note,.envelope-section__note,.surprise-card__note,.extra-gallery h2{color:#5C5265}
+.cover-brush{background:linear-gradient(90deg,transparent,#B5A3C7 16%,#927B9D 85%,transparent)}
+.cover-open,.story-return{background:#FFFCF5;color:#5C5265;border-color:#B5A3C7;box-shadow:0 7px 14px #5C52652b}
+.cover-open:hover{background:#FFFCF5}
+.paper-tape,.book-photo::after,.collage-photo::after{background:linear-gradient(94deg,#DFD2BD94,#FFFCF5d6 35%,#B5A3C79c 75%,#DFD2BDbc);border-color:#927B9D55;box-shadow:0 2px 3px #5C526526}
+.album-book{background:#927B9D;border-color:#75647F;box-shadow:0 35px 42px #5C52654f,0 12px 0 #75647F,0 18px 2px #B5A3C7,inset 0 0 0 2px #DFD2BD;filter:none}
+.album-book::after{background:linear-gradient(#B5A3C7,#FFFCF5 45%,#927B9D 55%,#DFD2BD);box-shadow:0 3px 2px #5C526540}
+.album-book .book-page{filter:none;box-shadow:inset 0 0 20px #927B9D4a}
+.album-book__left{background:radial-gradient(circle at 38% 24%,#927B9D20 0 2px,transparent 3px),linear-gradient(90deg,#B5A3C7,#F7F1E7 11%,#DFD2BD 85%,#B5A3C7)}
+.album-book__under,.album-book__leaf{background:radial-gradient(circle at 81% 73%,#9DA88B29 0 3px,transparent 4px),linear-gradient(90deg,#927B9D,#DFD2BD 5%,#F7F1E7 17%,#DFD2BD 91%,#B5A3C7)}
+.album-book__leaf{box-shadow:5px 4px 14px #5C526545}
+.album-book .book-page::before{border-color:#927B9D68}
+.album-book__binding{background:linear-gradient(90deg,#5C5265,#927B9D 18%,#DFD2BD 39%,#FFFCF5 48%,#B5A3C7 65%,#5C5265);box-shadow:-3px 0 8px #5C526560,3px 0 6px #5C526545}
+.book-page__heart,.final-letter__heart,.cover-heart{color:#927B9D}
+.photo-print__image{background:#DFD2BD}
+.collage-photo{box-shadow:0 13px 21px #5C52653d,0 2px 4px #5C526524}
+.collage-note{background:#FFFCF5;border-color:#DFD2BD;box-shadow:0 9px 13px #5C526529}
+.extra-gallery{background:#F7F1E7}
+.final-letter__paper{background:repeating-linear-gradient(92deg,transparent 0 5px,#60564D08 5px 6px),#FFFCF5;border-color:#DFD2BD;color:#60564D;box-shadow:0 24px 38px #5C52653a,7px 9px 0 #DFD2BD,9px 12px 11px #5C526526}
+.final-letter__text{color:#60564D}
+.final-letter__text p:first-child,.final-letter__paper h2{color:#5C5265}
+.card-story--reading-letter::before{background:#F7F1E7}
+.envelope-section__arrow,.album-scroll-hint{color:#927B9D}
+.album-scroll-hint__arrow{filter:drop-shadow(0 1px 1px #FFFCF5)}
+.surprise-envelope,.surprise-envelope:active{filter:drop-shadow(0 18px 15px #5C526540)}
+.surprise-overlay{background:#5C52658a}
+.surprise-card{background:linear-gradient(145deg,#FFFCF5,#DFD2BD);box-shadow:0 22px 55px #5C52656b;color:#60564D}
+.surprise-card__close{background:#927B9D;color:#FFFCF5}
+.surprise-card__note{background:#FFFCF5;box-shadow:0 5px 9px #5C52652b}
+.surprise-player,.music-control__message{background:#FFFCF5;border-color:#DFD2BD;color:#60564D}
+.surprise-player__toggle{background:#927B9D}
+.surprise-player__wave span{background:#DFD2BD}
+.surprise-player__wave span.is-played{background:#927B9D}
+.surprise-player__time{color:#60564D}
+.surprise-player__wave:focus-within{outline-color:#927B9D}
+.lightbox{background:#5C5265ed}
+.lightbox__panel{color:#FFFCF5}
+.lightbox__top button{background:#DFD2BD;color:#5C5265}
+.lightbox__arrow{border-color:#FFFCF57a;background:#FFFCF522;color:#FFFCF5}
+.music-control button{border-color:#B5A3C7;background:#FFFCF5;color:#927B9D;box-shadow:0 5px 14px #5C526533}
