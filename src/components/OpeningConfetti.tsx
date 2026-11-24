@@ -16,7 +16,8 @@ const pieces = Array.from({ length: 38 }, (_, index) => {
     '--fall-y': `${210 + index * 31 % 100}px`,
     '--spin': `${(index % 2 ? -1 : 1) * (75 + index * 23 % 160)}deg`,
     '--delay': `${index % 5 * 20}ms`,
-    '--paper-color': ['#c36e51', '#f0b99b', '#fff1d7', '#cf9590'][index % 4],
+    // Конфетти при открытии открытки Полины: только новые цвета, траектории и число частиц сохранены.
+    '--paper-color': ['#B5A3C7', '#9DA88B', '#DFD2BD', '#D5B0AE'][index % 4],
   } as CSSProperties
 })
 

@@ -632,3 +632,34 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
 .surprise-card{background:#f3eee6}
 @media(max-width:430px){.extra-gallery{margin:18px 12px 55px;padding:22px 12px}.extra-gallery__grid{gap:12px}.extra-gallery__grid .photo-print__image{height:145px}.cover-polaroid img{height:clamp(200px,37svh,320px)}.cover-composition{padding-top:35px;padding-bottom:35px}.cover-copy h1{font-size:clamp(51px,13vw,72px)}}
 @media(max-width:340px){.extra-gallery__grid .photo-print__image{height:125px}.cover-decor--gift{opacity:.3}}
+
+/* Украшения открытки Полины на обложке, в альбоме и письме: прозрачные ассеты Прованса занимают места прежнего декора. Цвета частиц обновлены, их формы, прозрачность и анимации сохранены. */
+.cover-decor--balloon,.cover-decor--balloons,.cover-decor--gift,.album-decor--balloon,.album-decor--balloons,.album-decor--gift,.collage__gift,.envelope-section__gift{opacity:1;filter:drop-shadow(2px 5px 5px #6e626020)}
+.cover-decor--lavender-sprig{z-index:1;top:10%;left:-7%;width:27%;transform:rotate(-22deg);filter:none}
+.cover-decor--lavender-composition{z-index:1;right:-10%;bottom:10%;width:46%;transform:rotate(-14deg);filter:none}
+.cover-decor--balloon{top:0;left:-7%;width:21%}
+.cover-decor--balloons{top:-5%;right:-8%;width:34%}
+.cover-decor--gift{left:-3%;bottom:0;width:24%;transform:rotate(-13deg)}
+.album-decor--lavender-bouquet{z-index:1;left:-8%;bottom:15%;width:25%;max-height:50%;object-fit:contain;transform:rotate(-16deg);filter:none}
+.album-decor--balloons{width:30%;right:-7%;top:-7%}
+.album-decor--balloon{width:18%;left:-7%;bottom:8%}
+.album-decor--gift{width:25%;left:-4%;bottom:0}
+.collage__lavender{position:absolute;z-index:1;right:-9%;bottom:5%;width:37%;height:auto;pointer-events:none}
+.final-letter__lavender{position:absolute;z-index:1;right:-4%;bottom:0;width:20%;max-height:34%;object-fit:contain;pointer-events:none;transform:rotate(18deg)}
+.paper-confetti__piece{background:#B5A3C7}
+.paper-confetti__piece--1{background:#DFD2BD}
+.paper-confetti__piece--2{background:#9DA88B}
+.hand-drawn-flower{stroke:#927B9D}
+@media(max-width:430px){
+  .cover-decor--lavender-sprig{top:8%;left:-11%;width:28%}
+  .cover-decor--lavender-composition{right:-14%;bottom:12%;width:53%}
+  .cover-decor--balloon{left:-5%;width:19%}
+  .cover-decor--balloons{right:-9%;width:31%}
+  .cover-decor--gift{left:-4%;width:26%}
+  .album-decor--lavender-bouquet{left:-8%;bottom:7%;width:28%}
+  .album-decor--balloons{width:26%;right:-5%}
+  .album-decor--balloon{width:16%;left:-5%}
+  .album-decor--gift{left:4%;width:23%}
+  .collage__lavender{right:-13%;width:45%}
+  .final-letter__lavender{right:-8%;width:29%}
+}

@@ -8,12 +8,15 @@ export function CardCover({ onOpen }: { onOpen: () => void }) {
     <main className="card-cover">
       <div className="cover-composition">
         <PaperConfetti placement="cover" />
-        <img className="cover-decor cover-decor--balloon" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
-        <img className="cover-decor cover-decor--balloons" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
-        <img className="cover-decor cover-decor--ribbon-left" src={decorPath('ribbon-long.webp')} alt="" aria-hidden="true" />
-        <img className="cover-decor cover-decor--ribbon-right" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" />
+        {/* Декор обложки Полины: прозрачная лаванда и утверждённые шары заменяют прежние изображения с бумажной подложкой; открытие открытки остаётся прежним. */}
+        <img className="cover-decor cover-decor--lavender-sprig" src={decorPath('lavender-sprig.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--lavender-composition" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--balloon" src={decorPath('balloon-milk-provence.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--balloons" src={decorPath('balloons-group-provence.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--ribbon-left" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--ribbon-right" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" />
         <figure className="cover-polaroid">
-          <img className="cover-polaroid__pushpin" src={decorPath('terracotta-pushpin.svg')} alt="" aria-hidden="true" />
+          <img className="cover-polaroid__pushpin" src={decorPath('lavender-pushpin.svg')} alt="" aria-hidden="true" />
           <img src={mediaPath('polina-01.jpg')} alt="Полина" />
           <figcaption>♡ Полина ♡</figcaption>
         </figure>
@@ -30,7 +33,7 @@ export function CardCover({ onOpen }: { onOpen: () => void }) {
             <span>Открыть поздравление</span>
           </button>
         </div>
-        <img className="cover-decor cover-decor--gift" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
+        <img className="cover-decor cover-decor--gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" />
       </div>
     </main>
   )

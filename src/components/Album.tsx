@@ -61,11 +61,13 @@ function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto
       <div className="album-sequence__stage">
         <AlbumScrollHint sectionRef={sequenceRef} modalOpen={modalOpen} />
         <PaperConfetti placement="album" />
-        <img className="album-decor album-decor--balloons" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
-        <img className="album-decor album-decor--balloon" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
-        <img className="album-decor album-decor--gift" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" />
-        <img className="album-decor album-decor--ribbon-side" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" />
-        <img className="album-decor album-decor--ribbon-bottom" src={decorPath('ribbon-long.webp')} alt="" aria-hidden="true" />
+        {/* Декор альбома Полины: новые прозрачные шары, подарок, ленты и букет; перелистывание и фотопросмотр не меняются. */}
+        <img className="album-decor album-decor--lavender-bouquet" src={decorPath('lavender-bouquet.webp')} alt="" aria-hidden="true" />
+        <img className="album-decor album-decor--balloons" src={decorPath('balloons-group-provence.webp')} alt="" aria-hidden="true" />
+        <img className="album-decor album-decor--balloon" src={decorPath('balloon-milk-provence.webp')} alt="" aria-hidden="true" />
+        <img className="album-decor album-decor--gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" />
+        <img className="album-decor album-decor--ribbon-side" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" />
+        <img className="album-decor album-decor--ribbon-bottom" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" />
         <div className="album-book" style={{ '--turn-angle': `${-180 * turn}deg` } as CSSProperties}>
           <div className="book-page book-page--left album-book__left">
             <HandDrawnFlower className="album-book__flower album-book__flower--top" />
@@ -128,7 +130,7 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <PhotoPrint item={photo('12')} caption="♡" onOpen={onOpenPhoto} className="collage-photo collage-photo--12" />
           <PhotoPrint item={photo('14')} onOpen={onOpenPhoto} className="collage-photo collage-photo--14" />
           <PhotoPrint item={photo('15')} caption="И ещё столько впереди ♡" onOpen={onOpenPhoto} className="collage-photo collage-photo--15" />
-          <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
         <section className="collage collage--together" aria-label="Воспоминания вместе">
@@ -140,8 +142,9 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <PhotoPrint item={photo('10')} caption="Вместе" onOpen={onOpenPhoto} className="collage-photo collage-photo--10" />
           <PhotoPrint item={photo('13')} onOpen={onOpenPhoto} className="collage-photo collage-photo--13" />
           <PhotoPrint item={photo('11')} caption="Тёплые моменты" onOpen={onOpenPhoto} className="collage-photo collage-photo--11" />
-          <img className="collage__ribbon collage__ribbon--together" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" loading="lazy" />
-          <img className="collage__gift" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__ribbon collage__ribbon--together" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__lavender" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
         <section className="extra-gallery" aria-label="Все фотографии Полины"><h2>Наши фотографии</h2><div className="extra-gallery__grid">{albumPhotos.filter(item => item.id === '08' || Number(item.id) >= 16).map(item => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} />)}</div></section>
@@ -153,7 +156,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
             <div className="final-letter__text">{letterParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
             <span className="final-letter__heart" aria-hidden="true">♡</span>
           </article>
-          <img className="final-letter__ribbon" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="final-letter__ribbon" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="final-letter__lavender" src={decorPath('lavender-sprig.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
         <section className="envelope-section" aria-label="Конверт-сюрприз">
@@ -169,10 +173,10 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
             <path d="M75 78C20 101 18 164 62 193C87 210 116 214 139 232M139 232l-14-2M139 232l-5-13" fill="none" stroke="url(#envelope-arrow-outline)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M75 78C20 101 18 164 62 193C87 210 116 214 139 232M139 232l-14-2M139 232l-5-13" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <img className="envelope-section__ribbon" src={decorPath('ribbon-curl.webp')} alt="" aria-hidden="true" loading="lazy" />
-          <img className="envelope-section__gift" src={decorPath('lavender-linen.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="envelope-section__ribbon" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="envelope-section__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
           <button className="surprise-envelope" type="button" onClick={(event) => onOpenSurprise(event.currentTarget)} aria-label="Открыть сюрприз">
-            <img className="surprise-envelope__image" src={decorPath('envelope.webp')} width={1000} height={776} alt="" aria-hidden="true" loading="lazy" />
+            <img className="surprise-envelope__image" src={decorPath('envelope-provence.webp')} width={925} height={620} alt="" aria-hidden="true" loading="lazy" />
           </button>
         </section>
       </div>
