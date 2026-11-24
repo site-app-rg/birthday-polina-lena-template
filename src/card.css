@@ -735,12 +735,12 @@ button:focus-visible{outline-color:#927B9D}
 .collage--transition .collage-photo--slot-1{top:min(15vw,98px);left:4%;width:59%;transform:rotate(-4deg)}
 .collage--transition .collage-photo--slot-2{top:min(47vw,306px);right:3%;width:55%;transform:rotate(5deg)}
 .collage--transition .collage-photo--slot-3{top:min(118vw,767px);left:12%;width:57%;transform:rotate(-2deg)}
-.collage--transition .collage-photo--slot-4{top:min(178vw,1157px);right:7%;width:59%;transform:rotate(4deg)}
+.collage--transition .collage-photo--slot-4{top:min(183vw,1190px);right:7%;width:59%;transform:rotate(4deg)}
 .collage--together .collage-photo--slot-1{top:min(15vw,98px);left:4%;width:61%;transform:rotate(-4deg)}
 .collage--together .collage-photo--slot-2{top:min(53vw,345px);right:3%;width:57%;transform:rotate(5deg)}
 .collage--together .collage-photo--slot-3{top:min(121vw,787px);left:8%;width:57%;transform:rotate(-4deg)}
 .collage--together .collage-photo--slot-4{z-index:6;top:min(180vw,1170px);left:16%;width:57%;transform:rotate(3deg)}
-.collage--together .collage-photo--slot-5{z-index:5;top:min(230vw,1495px);right:5%;width:59%;transform:rotate(-4deg)}
+.collage--together .collage-photo--slot-5{z-index:7;top:min(237vw,1540px);right:5%;width:59%;transform:rotate(-4deg)}
 .collage .collage-note{z-index:8;top:9px;right:3%;left:auto;width:auto;max-width:50%;font-size:clamp(18px,5vw,26px);transform:rotate(-4deg)}
 .collage--transition .collage__ribbon{right:-6%;bottom:0;width:46%}
 .collage--together .collage__ribbon{top:auto;left:-10%;bottom:5%;width:42%}

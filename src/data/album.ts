@@ -8,7 +8,8 @@ const orderedPhotos = (ids: string[]) => ids.map((id) => albumPhotos.find((item)
 export const childhoodPhotos = orderedPhotos(['13', '19', '11', '14'])
 export const firstCollagePhotos = orderedPhotos(['20', '21', '01', '03'])
 export const secondCollagePhotos = orderedPhotos(['23', '17', '15', '18', '08'])
-export const sliderPhotos = orderedPhotos(['02', '04', '05', '06', '07', '09', '10', '12', '22'])
+// Снимок 04 перенесён к письму; слайдер сохраняет прежний порядок остальных восьми фотографий без дублей.
+export const sliderPhotos = orderedPhotos(['02', '05', '06', '07', '09', '10', '12', '22'])
 export const surprisePhoto = albumPhotos[22]
 export const mainSong = ''
 export const surpriseSong = ''

@@ -144,7 +144,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
         <PhotoSlider onOpenPhoto={onOpenPhoto} />
         <section className="final-letter" ref={letterRef} aria-label="Поздравительное письмо">
           <PaperConfetti placement="letter" />
-          <PhotoPrint item={photo('05')} onOpen={onOpenPhoto} className="final-letter__photo" />
+          {/* У письма показывается снимок 04 с двумя женщинами; снимок 05 остаётся только в слайдере. */}
+          <PhotoPrint item={photo('04')} onOpen={onOpenPhoto} className="final-letter__photo" />
           <article className="final-letter__paper">
             <span className="paper-tape final-letter__tape" aria-hidden="true" />
             <div className="final-letter__text">{letterParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>

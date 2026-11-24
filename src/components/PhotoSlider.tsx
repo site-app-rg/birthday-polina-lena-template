@@ -3,7 +3,7 @@ import type { TouchEvent } from 'react'
 import type { AlbumPhoto } from '../data/album'
 import { sliderPhotos } from '../data/album'
 
-// Слайдер открытки Полины: центральная бумажная карточка и две соседние плавно перемещаются при ручном перелистывании; стрелки, свайпы, счётчик и увеличение снимка сохранены.
+// Слайдер открытки Полины: текущая и обе соседние карточки загружаются сразу, поэтому превью видны до первого свайпа; стрелки, счётчик и увеличение снимка сохранены.
 export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, trigger: HTMLButtonElement) => void }) {
   const [index, setIndex] = useState(0)
   const touchStart = useRef<{ x: number; y: number } | null>(null)
@@ -38,7 +38,7 @@ export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, 
             const distance = (photoIndex - index + sliderPhotos.length) % sliderPhotos.length
             const place = distance === 0 ? 'current' : distance === 1 ? 'next' : distance === sliderPhotos.length - 1 ? 'previous' : 'hidden'
             return <button key={item.id} className={`photo-print photo-slider__print photo-slider__print--${place}`} type="button" tabIndex={place === 'current' ? 0 : -1} aria-hidden={place !== 'current'} aria-label={place === 'current' ? `Открыть фотографию: ${item.alt}` : undefined} onClick={(event) => { if (place === 'current' && !suppressClick.current) onOpenPhoto(item, event.currentTarget) }}>
-              <span className="photo-print__image"><img src={item.src} alt="" loading={place === 'current' ? 'eager' : 'lazy'} /></span>
+              <span className="photo-print__image"><img src={item.src} alt="" loading={place === 'hidden' ? 'lazy' : 'eager'} /></span>
             </button>
           })}
         </div>
