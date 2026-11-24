@@ -776,3 +776,13 @@ button:focus-visible{outline-color:#927B9D}
 .vintage-telephone__error{margin:4px 0 0;color:#60564D;font-size:13px}
 @keyframes vintage-telephone-ring{0%{transform:rotate(-4deg)}100%{transform:rotate(4deg)}}
 @media(prefers-reduced-motion:reduce){.vintage-telephone__button--ringing{animation:none}}
+
+/* Подписи Полины: левая страница детского альбома показывает сердечко или веточку лаванды вместо текста, коллажи получают новые надписи, а слайдер освобождён от заголовка и его верхнего отступа. Механика перелистывания сохранена. */
+.album-book .album-book__emblem{position:absolute;z-index:1;top:35%;left:auto;right:14px;display:block;pointer-events:none;transform:rotate(-7deg);transition:opacity .18s ease}
+.album-book__emblem--heart{color:#927B9D;font:clamp(65px,17vw,110px)/1 Georgia,serif;text-shadow:0 3px 5px #5C526525}
+.album-book .album-book__emblem--lavender{top:30%;width:clamp(70px,21vw,125px);height:auto;opacity:0;transform:rotate(18deg)}
+.album-sequence.is-second .album-book__emblem--heart{opacity:0}
+.album-sequence.is-second .album-book__emblem--lavender{opacity:1}
+.collage .collage-note{max-width:59%;font-size:clamp(17px,4.5vw,24px);line-height:1.12}
+.photo-slider{padding-top:8px}
+@media(prefers-reduced-motion:reduce){.album-book .album-book__emblem{transition:none}}

@@ -74,8 +74,9 @@ function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto
         <div className="album-book" style={{ '--turn-angle': `${-180 * turn}deg` } as CSSProperties}>
           <div className="book-page book-page--left album-book__left">
             <HandDrawnFlower className="album-book__flower album-book__flower--top" />
-            <p className="album-book__caption album-book__caption--first" aria-label="Моменты, которые хочется помнить">{['Моменты,', 'которые хочется', 'помнить'].map(line => <span key={line}>{line}</span>)}</p>
-            <p className="album-book__caption album-book__caption--second" aria-label="И сколько ещё впереди">{['И сколько ещё', 'впереди'].map(line => <span key={line}>{line}</span>)}</p>
+            {/* Левая страница детского альбома: вместо текстовых подписей при перелистывании сменяются сердечко и небольшая веточка лаванды. */}
+            <span className="album-book__emblem album-book__emblem--heart" aria-hidden="true">♡</span>
+            <img className="album-book__emblem album-book__emblem--lavender" src={decorPath('lavender-sprig.webp')} alt="" aria-hidden="true" />
             <HandDrawnFlower className="album-book__flower album-book__flower--bottom" />
           </div>
           <div className="book-page book-page--right album-book__under" inert={!secondVisible} aria-hidden={!secondVisible}>
@@ -129,7 +130,7 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
 
         <section className="collage collage--transition" aria-label="Тёплые моменты">
           <PaperConfetti placement="transition" />
-          <span className="collage-note collage-note--transition">Тёплые<br />мгновения <HandDrawnFlower className="collage-note__flower" /></span>
+          <span className="collage-note collage-note--transition">Моменты, которые хочется помнить <HandDrawnFlower className="collage-note__flower" /></span>
           {firstCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
           <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
@@ -139,7 +140,7 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
 
         <section className="collage collage--together" aria-label="Воспоминания вместе">
           <PaperConfetti placement="together" />
-          <span className="collage-note collage-note--together">Друзья<br />всегда рядом ♡</span>
+          <span className="collage-note collage-note--together">Маленькие радости большой жизни</span>
           {secondCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
           <img className="collage__ribbon collage__ribbon--together" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />

@@ -30,7 +30,6 @@ export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, 
 
   return (
     <section className="photo-slider" aria-label="Наши фотографии" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      <h2>Наши фотографии</h2>
       <div className="photo-slider__row">
         <button className="photo-slider__arrow" type="button" onClick={() => move(-1)} aria-label="Предыдущая фотография">‹</button>
         <div className="photo-slider__stage" aria-live="polite">
