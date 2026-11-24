@@ -565,7 +565,7 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
 .surprise-player__wave:focus-within{outline:2px solid #ad4f32;outline-offset:3px;border-radius:4px}
 .surprise-card__wink{display:inline-block;font-family:'Segoe UI Emoji','Apple Color Emoji',sans-serif;font-size:.65em;vertical-align:1px}
 .surprise-card__note{font-size:clamp(22px,6vw,27px)}
-.surprise-envelope__image{animation:envelope-invitation 3s 1s ease-in-out infinite;transform-origin:50% 65%}
+.surprise-envelope__art{display:block;position:relative;animation:envelope-invitation 3s 1s ease-in-out infinite;transform-origin:50% 65%}
 @keyframes envelope-invitation{0%,30%,100%{transform:rotate(0) scale(1)}46.333%{transform:rotate(1deg) scale(1.01)}62.666%{transform:rotate(-.8deg) scale(1.015)}79%{transform:rotate(.4deg) scale(1.005)}}
 @media(max-width:700px){
   .album-decor--gift{left:10%;bottom:-25px;transform:rotate(30deg)}
@@ -585,7 +585,7 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
   100%{opacity:0;transform:translate(var(--landing-x),var(--fall-y)) rotate(var(--spin)) scale(.85)}
 }
 @media(prefers-reduced-motion:reduce){
-  .surprise-envelope__image{animation:none}
+  .surprise-envelope__art{animation:none}
   .opening-confetti{display:none}
 }
 
@@ -802,3 +802,16 @@ svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke
   .album-book__heart--lavender-right{top:51%;right:5%;width:18%}
 }
 @media(prefers-reduced-motion:reduce){.album-book__composition{transition:none}}
+
+/* Конверт и видео Полины: поверх исходного изображения лежит тонкая бечёвка, а открытое окно содержит только поздравление и ролик в бумажном обрамлении. Пропорции видео сохраняются. */
+.surprise-envelope__vertical-string{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;overflow:visible}
+.surprise-envelope__vertical-string path{stroke-linecap:round;stroke-linejoin:round}
+.surprise-envelope__string-shadow{stroke:#886845;stroke-width:13;opacity:.32}
+.surprise-envelope__string-body{stroke:#c9a675;stroke-width:8}
+.surprise-envelope__string-twist{stroke:#f3ddb0;stroke-width:2;stroke-dasharray:3 6;opacity:.85}
+.surprise-card{width:min(390px,100%);padding:28px 18px 22px}
+.surprise-card__close{top:8px;right:8px}
+.surprise-card__note{margin:35px 24px 16px;padding:0;background:none;box-shadow:none;font-size:clamp(24px,6.8vw,31px);line-height:1.1;transform:rotate(-2deg)}
+.surprise-video-frame{width:fit-content;max-width:100%;margin:0 auto;padding:7px;border:1px solid #DFD2BD;background:#FFFCF5;box-shadow:0 10px 22px #5C526536,0 2px 5px #5C526522;transform:rotate(.5deg)}
+.surprise-video{display:block;width:auto;max-width:100%;height:auto;max-height:min(62svh,560px);margin:0;background:#DFD2BD;object-fit:contain}
+@media(max-width:350px){.surprise-card{padding:24px 12px 15px}.surprise-card__note{margin:35px 17px 13px}}

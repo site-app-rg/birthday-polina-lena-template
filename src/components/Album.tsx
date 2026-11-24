@@ -180,7 +180,7 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
 
         <section className="envelope-section" aria-label="Конверт-сюрприз">
           <PaperConfetti placement="envelope" />
-          <p className="envelope-section__note">Открой маленький<br />сюрприз ♡</p>
+          <p className="envelope-section__note">Открой конвертик&nbsp;♡</p>
           <svg className="envelope-section__arrow" viewBox="0 0 390 430" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="envelope-arrow-outline" x1="0" y1="145" x2="0" y2="214" gradientUnits="userSpaceOnUse">
@@ -194,7 +194,15 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <img className="envelope-section__ribbon" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="envelope-section__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
           <button className="surprise-envelope" type="button" onClick={(event) => onOpenSurprise(event.currentTarget)} aria-label="Открыть сюрприз">
-            <img className="surprise-envelope__image" src={decorPath('envelope-provence.webp')} width={925} height={620} alt="" aria-hidden="true" loading="lazy" />
+            <span className="surprise-envelope__art">
+              <img className="surprise-envelope__image" src={decorPath('envelope-provence.webp')} width={925} height={620} alt="" aria-hidden="true" loading="lazy" />
+              {/* Бечёвка конверта Полины: две тонкие линии проходят поверх бумаги и уходят под существующую сургучную печать; исходный прозрачный ассет и его декор сохранены. */}
+              <svg className="surprise-envelope__vertical-string" viewBox="0 0 925 620" fill="none" aria-hidden="true" focusable="false">
+                <path className="surprise-envelope__string-shadow" d="M419 71C420 153 429 244 438 313M451 460C455 492 460 523 464 551" />
+                <path className="surprise-envelope__string-body" d="M419 71C420 153 429 244 438 313M451 460C455 492 460 523 464 551" />
+                <path className="surprise-envelope__string-twist" d="M419 71C420 153 429 244 438 313M451 460C455 492 460 523 464 551" />
+              </svg>
+            </span>
           </button>
         </section>
       </div>

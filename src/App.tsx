@@ -4,7 +4,7 @@ import { Album } from './components/Album'
 import { CardCover } from './components/CardCover'
 import { PhotoLightbox } from './components/PhotoLightbox'
 import { SurpriseModal } from './components/SurpriseModal'
-import { albumPhotos, mainSong, surprisePhoto, surpriseSong } from './data/album'
+import { albumPhotos, mainSong, surpriseSong } from './data/album'
 import type { AlbumPhoto } from './data/album'
 
 type LightboxState = { photo: AlbumPhoto; source: 'album' | 'surprise' } | null
@@ -92,11 +92,6 @@ export default function App() {
     setLightbox({ photo, source: 'album' })
   }
 
-  function openSurprisePhoto(trigger: HTMLButtonElement) {
-    photoTriggerRef.current = trigger
-    setLightbox({ photo: surprisePhoto, source: 'surprise' })
-  }
-
   function closeLightbox() {
     setLightbox(null)
     requestAnimationFrame(() => photoTriggerRef.current?.focus())
@@ -174,7 +169,7 @@ export default function App() {
 
       {celebrating && <OpeningConfetti onComplete={finishCelebrating} />}
 
-      {surpriseOpen && <SurpriseModal onClose={closeSurprise} onOpenPhoto={openSurprisePhoto} onToggleAudio={toggleSurpriseAudio} onSeekAudio={seekSurpriseAudio} isAudioPlaying={isSurprisePlaying} duration={surpriseDuration} currentTime={surpriseTime} audioMessage={surpriseAudioMessage} />}
+      {surpriseOpen && <SurpriseModal onClose={closeSurprise} onToggleAudio={toggleSurpriseAudio} onSeekAudio={seekSurpriseAudio} isAudioPlaying={isSurprisePlaying} duration={surpriseDuration} currentTime={surpriseTime} audioMessage={surpriseAudioMessage} />}
       {lightbox && <PhotoLightbox photo={lightbox.photo} hasNavigation={lightbox.source === 'album'} onClose={closeLightbox} onPrevious={() => movePhoto(-1)} onNext={() => movePhoto(1)} />}
     </>
   )
