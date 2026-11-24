@@ -711,3 +711,8 @@ button:focus-visible{outline-color:#927B9D}
 .lightbox__top button{background:#DFD2BD;color:#5C5265}
 .lightbox__arrow{border-color:#FFFCF57a;background:#FFFCF522;color:#FFFCF5}
 .music-control button{border-color:#B5A3C7;background:#FFFCF5;color:#927B9D;box-shadow:0 5px 14px #5C526533}
+
+/* Завершение палитры открытки Полины: у лент, лаванды и канцелярской кнопки убраны тёплые тени; блик кнопки согласован с цветом бумаги. Положение и анимация этих элементов сохранены. */
+.cover-decor--ribbon-left,.cover-decor--ribbon-right,.album-decor--ribbon-side,.album-decor--ribbon-bottom,.collage__ribbon,.final-letter__ribbon,.envelope-section__ribbon{filter:drop-shadow(2px 5px 6px #5C526536)}
+.cover-polaroid .cover-polaroid__pushpin{filter:drop-shadow(1px 2px 1px #5C52654d)}
+.cover-open::before{background:linear-gradient(110deg,transparent 39%,#FFFCF580 46%,#FFFCF5ed 50%,#FFFCF580 54%,transparent 61%)}
