@@ -24,6 +24,8 @@ export default function App() {
   const mainAudioRef = useRef<HTMLAudioElement>(null)
   const surpriseAudioRef = useRef<HTMLAudioElement>(null)
   const wasMusicPlayingRef = useRef(false)
+  const phoneMusicResumeRef = useRef(false)
+  const phoneActiveRef = useRef(false)
   const photoTriggerRef = useRef<HTMLButtonElement | null>(null)
   const envelopeTriggerRef = useRef<HTMLButtonElement | null>(null)
   const modalOpen = Boolean(lightbox || surpriseOpen)
@@ -58,6 +60,7 @@ export default function App() {
 
   function backToCover() {
     setCelebrating(false)
+    phoneMusicResumeRef.current = false
     mainAudioRef.current?.pause()
     setOpened(false)
     setAudioMessage('')
@@ -68,6 +71,20 @@ export default function App() {
     if (!audio) return
     if (audio.paused) playMainMusic()
     else audio.pause()
+  }
+
+  // Телефон Полины сообщает о звонке и мелодии: будущая фоновая музыка ставится на паузу и возвращается только если играла до телефона.
+  function handlePhoneActivityChange(active: boolean) {
+    if (phoneActiveRef.current === active) return
+    phoneActiveRef.current = active
+    const background = mainAudioRef.current
+    if (active) {
+      phoneMusicResumeRef.current = Boolean(background && !background.paused && !background.ended)
+      background?.pause()
+    } else {
+      if (phoneMusicResumeRef.current && background) void background.play().catch(() => setAudioMessage('Нажми на кнопку музыки, чтобы продолжить.'))
+      phoneMusicResumeRef.current = false
+    }
   }
 
   function openPhoto(photo: AlbumPhoto, trigger: HTMLButtonElement) {
@@ -153,7 +170,7 @@ export default function App() {
       {mainSong && <audio ref={mainAudioRef} src={mainSong} preload="metadata" onPlay={() => { setIsMusicPlaying(true); setAudioMessage('') }} onPause={() => setIsMusicPlaying(false)} onEnded={() => setIsMusicPlaying(false)} onError={() => setAudioMessage('Не удалось загрузить песню.')} />}
       {surpriseSong && <audio id="surprise-audio" ref={surpriseAudioRef} src={surpriseSong} preload="metadata" onLoadedMetadata={(event) => setSurpriseDuration(event.currentTarget.duration)} onTimeUpdate={(event) => setSurpriseTime(event.currentTarget.currentTime)} onPlay={() => { setIsSurprisePlaying(true); setSurpriseAudioMessage('') }} onPause={() => setIsSurprisePlaying(false)} onEnded={() => setIsSurprisePlaying(false)} onError={() => setSurpriseAudioMessage('Не удалось загрузить аудио.')} />}
 
-      {opened ? <Album onBack={backToCover} onOpenPhoto={openPhoto} onOpenSurprise={openSurprise} onToggleMusic={toggleMusic} isMusicPlaying={isMusicPlaying} audioMessage={audioMessage} modalOpen={modalOpen} /> : <CardCover onOpen={openCard} />}
+      {opened ? <Album onBack={backToCover} onOpenPhoto={openPhoto} onOpenSurprise={openSurprise} onToggleMusic={toggleMusic} isMusicPlaying={isMusicPlaying} audioMessage={audioMessage} modalOpen={modalOpen} onPhoneActivityChange={handlePhoneActivityChange} /> : <CardCover onOpen={openCard} />}
 
       {celebrating && <OpeningConfetti onComplete={finishCelebrating} />}
 

@@ -6,6 +6,7 @@ import { PaperConfetti } from './PaperConfetti'
 import { HandDrawnFlower } from './HandDrawnFlower'
 import { AlbumScrollHint } from './AlbumScrollHint'
 import { PhotoSlider } from './PhotoSlider'
+import { VintageTelephone } from './VintageTelephone'
 
 type AlbumProps = {
   onBack: () => void
@@ -15,6 +16,7 @@ type AlbumProps = {
   isMusicPlaying: boolean
   audioMessage: string
   modalOpen: boolean
+  onPhoneActivityChange: (active: boolean) => void
 }
 
 const photo = (id: string) => albumPhotos.find((item) => item.id === id)!
@@ -91,7 +93,7 @@ function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto
   )
 }
 
-export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMusicPlaying, audioMessage, modalOpen }: AlbumProps) {
+export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMusicPlaying, audioMessage, modalOpen, onPhoneActivityChange }: AlbumProps) {
   const letterRef = useRef<HTMLElement>(null)
   const [letterVisible, setLetterVisible] = useState(false)
   const [letterUnderControls, setLetterUnderControls] = useState(false)
@@ -131,6 +133,9 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           {firstCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
           <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
+
+        {/* Телефон Полины разделяет два фотоколлажа и управляет звонком и мелодией без отдельного плеера. */}
+        <VintageTelephone onActivityChange={onPhoneActivityChange} />
 
         <section className="collage collage--together" aria-label="Воспоминания вместе">
           <PaperConfetti placement="together" />
