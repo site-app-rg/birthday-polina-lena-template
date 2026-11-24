@@ -867,8 +867,9 @@ svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke
   .final-letter__lavender{right:9%;bottom:1%;width:12%}
 }
 
-/* Две точечные правки Полины: подарок под детским альбомом опущен пропорционально ширине телефона; редкое конфетти занимает промежуток после слайдера, не увеличивая разделы и не затрагивая фотографии. */
-@media(max-width:700px){.album-decor--gift{translate:0 clamp(23px,7.2vw,31px)}}
+/* Подарок под детским альбомом Полины: на телефоне его высота зависит от размеров самой страницы альбома, поэтому бант остаётся видимым при разной высоте окна; размер, положение по горизонтали и наклон сохранены. Конфетти после слайдера не меняет высоту разделов. */
+@media(max-width:700px){.album-decor--gift{translate:none;top:calc(75px + min(130vw,510px) + 33px);bottom:auto}}
+@media(max-width:350px){.album-decor--gift{display:block}}
 .photo-slider{position:relative}
 .paper-confetti--slider-gap{top:calc(100% - 8px);bottom:auto;height:76px;overflow:visible}
 .paper-confetti--slider-gap .paper-confetti__piece{opacity:.48}
