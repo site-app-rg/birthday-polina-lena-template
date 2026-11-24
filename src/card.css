@@ -716,3 +716,5 @@ button:focus-visible{outline-color:#927B9D}
 .cover-decor--ribbon-left,.cover-decor--ribbon-right,.album-decor--ribbon-side,.album-decor--ribbon-bottom,.collage__ribbon,.final-letter__ribbon,.envelope-section__ribbon{filter:drop-shadow(2px 5px 6px #5C526536)}
 .cover-polaroid .cover-polaroid__pushpin{filter:drop-shadow(1px 2px 1px #5C52654d)}
 .cover-open::before{background:linear-gradient(110deg,transparent 39%,#FFFCF580 46%,#FFFCF5ed 50%,#FFFCF580 54%,transparent 61%)}
+/* Фото на первом экране Полины: снимок целиком помещается в прежнюю бумажную рамку, без изменения её размера, наклона и оформления. */
+.cover-polaroid .cover-polaroid__portrait{object-fit:contain;background:#FFFCF5}

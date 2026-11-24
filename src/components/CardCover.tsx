@@ -17,7 +17,8 @@ export function CardCover({ onOpen }: { onOpen: () => void }) {
         <img className="cover-decor cover-decor--ribbon-right" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" />
         <figure className="cover-polaroid">
           <img className="cover-polaroid__pushpin" src={decorPath('lavender-pushpin.svg')} alt="" aria-hidden="true" />
-          <img src={mediaPath('polina-01.jpg')} alt="Полина" />
+          {/* Фото обложки Полины: отдельная копия снимка 16 обрезана только по чёрным полосам; исходник и прежнее фото обложки остаются в галерее. */}
+          <img className="cover-polaroid__portrait" src={mediaPath('polina-16-cover.jpg')} alt="Полина" />
           <figcaption>♡ Полина ♡</figcaption>
         </figure>
         <div className="cover-copy">
