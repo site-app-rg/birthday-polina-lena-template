@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import type { TouchEvent } from 'react'
 import type { AlbumPhoto } from '../data/album'
 import { sliderPhotos } from '../data/album'
+import { PaperConfetti } from './PaperConfetti'
 
 // Слайдер открытки Полины: текущая и обе соседние карточки загружаются сразу, поэтому превью видны до первого свайпа; стрелки, счётчик и увеличение снимка сохранены.
 export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, trigger: HTMLButtonElement) => void }) {
@@ -44,6 +45,8 @@ export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, 
         <button className="photo-slider__arrow" type="button" onClick={() => move(1)} aria-label="Следующая фотография">›</button>
       </div>
       <p className="photo-slider__count" aria-label={`Фотография ${index + 1} из ${sliderPhotos.length}`}>{index + 1} / {sliderPhotos.length}</p>
+      {/* Редкое конфетти заполняет только свободный промежуток после счётчика, не меняя высоту слайдера и его управление. */}
+      <PaperConfetti placement="slider-gap" />
     </section>
   )
 }

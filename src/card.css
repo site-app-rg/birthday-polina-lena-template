@@ -866,3 +866,13 @@ svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke
   .final-letter{padding-bottom:235px}
   .final-letter__lavender{right:9%;bottom:1%;width:12%}
 }
+
+/* Две точечные правки Полины: подарок под детским альбомом опущен пропорционально ширине телефона; редкое конфетти занимает промежуток после слайдера, не увеличивая разделы и не затрагивая фотографии. */
+@media(max-width:700px){.album-decor--gift{translate:0 clamp(23px,7.2vw,31px)}}
+.photo-slider{position:relative}
+.paper-confetti--slider-gap{top:calc(100% - 8px);bottom:auto;height:76px;overflow:visible}
+.paper-confetti--slider-gap .paper-confetti__piece{opacity:.48}
+.paper-confetti--slider-gap .paper-confetti__piece--0{background:#B5A3C7}
+.paper-confetti--slider-gap .paper-confetti__piece--1{background:#FFFCF5;opacity:.78}
+.paper-confetti--slider-gap .paper-confetti__piece--2{background:#9DA88B}
+.paper-confetti--slider-gap .paper-confetti__piece:nth-child(4n){background:#D5B0AE}
