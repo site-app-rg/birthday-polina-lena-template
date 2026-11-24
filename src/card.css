@@ -721,31 +721,46 @@ button:focus-visible{outline-color:#927B9D}
 
 /* Компоновка снимков Полины: альбом листается как прежде, два коллажа собираются из бумажных карточек без пустых промежутков, а ручной слайдер занимает место прежней сетки. */
 .album-sequence{height:155svh}
-.collage--transition,.collage--together{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:13px 12px;width:min(100%,660px);height:auto;margin:26px auto 0;padding:72px 18px 82px}
-.collage--together{margin-top:8px;padding-bottom:100px}
-.collage .collage-photo{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:100%;padding:6px 6px 3px}
+/* Коллажи Полины: возвращено расположение крупных карточек Лены с чередованием сторон, перекрытием рамок и сохранением пропорций фотографий. */
+.collage--transition,.collage--together{display:block;width:min(100%,650px);margin:26px auto 0;padding:0;height:min(312vw,2028px)}
+.collage--together{height:min(435vw,2828px);margin-top:0}
+.collage .collage-photo{position:absolute;right:auto;bottom:auto;left:auto;width:70%;padding:7px 7px 4px}
 .collage .collage-photo .photo-print__image{height:auto;background:transparent}
 .collage .collage-photo .photo-print__image img{display:block;width:100%;height:auto;object-fit:contain}
-.collage .collage-photo--slot-1{transform:rotate(-4deg)}
-.collage .collage-photo--slot-2{transform:rotate(3deg)}
-.collage .collage-photo--slot-3{transform:rotate(2deg)}
-.collage .collage-photo--slot-4{transform:rotate(-3deg)}
-.collage--together .collage-photo--slot-5{grid-column:1/-1;justify-self:center;width:58%;transform:rotate(2deg)}
-.collage .collage-note{top:9px;left:62px;right:auto;width:auto;max-width:65%;font-size:clamp(18px,5vw,26px);transform:rotate(-4deg)}
-.collage--together .collage-note{max-width:70%}
+.collage .collage-photo--slot-1{z-index:2;transform:rotate(-5deg)}
+.collage .collage-photo--slot-2{z-index:3;transform:rotate(5deg)}
+.collage .collage-photo--slot-3{z-index:4;transform:rotate(-3deg)}
+.collage .collage-photo--slot-4{z-index:5;transform:rotate(4deg)}
+.collage .collage-photo--slot-5{z-index:6;transform:rotate(-4deg)}
+.collage--transition .collage-photo--slot-1{top:min(22vw,143px);left:1%;width:72%}
+.collage--transition .collage-photo--slot-2{top:min(68vw,442px);right:1%;width:67%}
+.collage--transition .collage-photo--slot-3{top:min(155vw,1008px);left:0;width:70%}
+.collage--transition .collage-photo--slot-4{top:min(248vw,1612px);right:1%;width:72%}
+.collage--together .collage-photo--slot-1{top:min(22vw,143px);left:1%;width:74%}
+.collage--together .collage-photo--slot-2{top:min(76vw,494px);right:1%;width:70%}
+.collage--together .collage-photo--slot-3{top:min(170vw,1105px);left:0;width:70%}
+.collage--together .collage-photo--slot-4{top:min(238vw,1547px);right:1%;width:69%}
+.collage--together .collage-photo--slot-5{top:min(330vw,2145px);left:1%;width:72%}
+.collage .collage-note{z-index:8;top:9px;right:3%;left:auto;width:auto;max-width:50%;font-size:clamp(18px,5vw,26px);transform:rotate(-4deg)}
 .collage--transition .collage__ribbon{right:-6%;bottom:0;width:46%}
 .collage--together .collage__ribbon{top:auto;left:-10%;bottom:5%;width:42%}
 .collage--together .collage__gift{left:0;bottom:0;width:22%}
 .collage--together .collage__lavender{right:-7%;bottom:0;width:30%}
-.photo-slider{max-width:680px;margin:12px auto 50px;padding:58px 10px 25px;text-align:center}
+/* Слайдер Полины: соседние фотокарточки выглядывают за центральной и плавно уходят в стороны без прокрутки страницы; бумажные рамки и существующая палитра сохранены. */
+.photo-slider{max-width:680px;margin:12px auto 50px;padding:58px 0 25px;text-align:center}
 .photo-slider h2{margin:0 0 18px;color:#5C5265;font:38px/1.15 'Marck Script',cursive}
-.photo-slider__row{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:center;gap:4px}
-.photo-slider__stage{display:grid;place-items:center;min-height:min(52svh,460px)}
-.photo-slider__print{width:max-content;max-width:100%;padding:8px;animation:photo-slider-in .35s ease both}
+.photo-slider__row{position:relative;display:block;width:100%;height:min(63svh,560px)}
+.photo-slider__stage{position:relative;width:100%;height:100%;min-height:0;overflow:clip;isolation:isolate}
+.photo-slider__print{position:absolute;top:50%;left:50%;width:max-content;max-width:100%;padding:7px;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-50%) scale(.7);transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease,visibility .55s}
 .photo-slider__print .photo-print__image{display:block;width:max-content;max-width:100%;height:auto;background:transparent}
-.photo-slider__print img{display:block;width:auto;max-width:min(70vw,420px);max-height:min(48svh,420px);height:auto;object-fit:contain}
-.photo-slider__arrow{display:grid;place-items:center;width:42px;height:48px;border:1px solid #B5A3C7;border-radius:50%;background:#FFFCF5;box-shadow:0 4px 10px #5C526529;color:#5C5265;font:34px/1 Georgia,serif;cursor:pointer}
+.photo-slider__print img{display:block;width:auto;max-width:min(86vw,520px);max-height:min(53svh,470px);height:auto;object-fit:contain}
+.photo-slider__print--previous,.photo-slider__print--next{z-index:1;opacity:.82;visibility:visible;filter:brightness(.96)}
+.photo-slider__print--previous{transform:translate(calc(-50% - min(59vw,270px)),-50%) rotate(-5deg) scale(.82)}
+.photo-slider__print--next{transform:translate(calc(-50% + min(59vw,270px)),-50%) rotate(5deg) scale(.82)}
+.photo-slider__print--current{z-index:3;opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,-50%) rotate(-2deg)}
+.photo-slider__arrow{position:absolute;z-index:5;top:50%;display:grid;place-items:center;width:42px;height:48px;border:1px solid #B5A3C7;border-radius:50%;background:#FFFCF5e8;box-shadow:0 4px 10px #5C526529;color:#5C5265;font:34px/1 Georgia,serif;cursor:pointer;transform:translateY(-50%)}
+.photo-slider__arrow:first-child{left:7px}
+.photo-slider__arrow:last-child{right:7px}
 .photo-slider__count{margin:10px 0 0;color:#60564D;font-size:16px}
-@keyframes photo-slider-in{from{opacity:.35;transform:translateX(12px) rotate(1deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
-@media(max-width:430px){.collage--transition,.collage--together{gap:11px 8px;padding-right:12px;padding-left:12px}.photo-slider h2{font-size:34px}.photo-slider__stage{min-height:47svh}}
-@media(prefers-reduced-motion:reduce){.photo-slider__print{animation:none}}
+@media(max-width:430px){.photo-slider h2{font-size:34px}}
+@media(prefers-reduced-motion:reduce){.photo-slider__print{transition:none}}

@@ -3,13 +3,11 @@ import type { TouchEvent } from 'react'
 import type { AlbumPhoto } from '../data/album'
 import { sliderPhotos } from '../data/album'
 
-// Слайдер открытки Полины: на месте прежней сетки показан один снимок; стрелки и свайпы листают девять фото вручную, нажатие открывает действующий фотопросмотр.
+// Слайдер открытки Полины: центральная бумажная карточка и две соседние плавно перемещаются при ручном перелистывании; стрелки, свайпы, счётчик и увеличение снимка сохранены.
 export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, trigger: HTMLButtonElement) => void }) {
   const [index, setIndex] = useState(0)
   const touchStart = useRef<{ x: number; y: number } | null>(null)
   const suppressClick = useRef(false)
-  const current = sliderPhotos[index]
-
   function move(direction: number) {
     setIndex((previous) => (previous + direction + sliderPhotos.length) % sliderPhotos.length)
   }
@@ -36,9 +34,13 @@ export function PhotoSlider({ onOpenPhoto }: { onOpenPhoto: (photo: AlbumPhoto, 
       <div className="photo-slider__row">
         <button className="photo-slider__arrow" type="button" onClick={() => move(-1)} aria-label="Предыдущая фотография">‹</button>
         <div className="photo-slider__stage" aria-live="polite">
-          <button key={current.id} className="photo-print photo-slider__print" type="button" aria-label={`Открыть фотографию: ${current.alt}`} onClick={(event) => { if (!suppressClick.current) onOpenPhoto(current, event.currentTarget) }}>
-            <span className="photo-print__image"><img src={current.src} alt="" /></span>
-          </button>
+          {sliderPhotos.map((item, photoIndex) => {
+            const distance = (photoIndex - index + sliderPhotos.length) % sliderPhotos.length
+            const place = distance === 0 ? 'current' : distance === 1 ? 'next' : distance === sliderPhotos.length - 1 ? 'previous' : 'hidden'
+            return <button key={item.id} className={`photo-print photo-slider__print photo-slider__print--${place}`} type="button" tabIndex={place === 'current' ? 0 : -1} aria-hidden={place !== 'current'} aria-label={place === 'current' ? `Открыть фотографию: ${item.alt}` : undefined} onClick={(event) => { if (place === 'current' && !suppressClick.current) onOpenPhoto(item, event.currentTarget) }}>
+              <span className="photo-print__image"><img src={item.src} alt="" loading={place === 'current' ? 'eager' : 'lazy'} /></span>
+            </button>
+          })}
         </div>
         <button className="photo-slider__arrow" type="button" onClick={() => move(1)} aria-label="Следующая фотография">›</button>
       </div>
