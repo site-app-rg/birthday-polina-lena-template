@@ -3,7 +3,6 @@ import type { CSSProperties } from 'react'
 import type { AlbumPhoto } from '../data/album'
 import { albumPhotos, childhoodPhotos, firstCollagePhotos, secondCollagePhotos, letterParagraphs } from '../data/album'
 import { PaperConfetti } from './PaperConfetti'
-import { HandDrawnFlower } from './HandDrawnFlower'
 import { AlbumScrollHint } from './AlbumScrollHint'
 import { PhotoSlider } from './PhotoSlider'
 import { VintageTelephone } from './VintageTelephone'
@@ -147,8 +146,11 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
 
         <section className="collage collage--transition" aria-label="Тёплые моменты">
           <PaperConfetti placement="transition" />
-          <span className="collage-note collage-note--transition">Моменты, которые хочется помнить <HandDrawnFlower className="collage-note__flower" /></span>
+          <span className="collage-note collage-note--transition">Моменты, которые хочется помнить <span className="collage-note__heart" aria-hidden="true">♡</span></span>
           {firstCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
+          {/* Декор первого коллажа Полины: букет стоит в свободном поле у снимка со львом, шары находятся справа от совместного фото; карточки и подпись не меняются. */}
+          <img className="collage__accent collage__accent--lion-bouquet" src={decorPath('lavender-bouquet.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__accent collage__accent--friends-balloons" src={decorPath('balloons-group-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
@@ -157,9 +159,14 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
 
         <section className="collage collage--together" aria-label="Воспоминания вместе">
           <PaperConfetti placement="together" />
-          <span className="collage-note collage-note--together">Маленькие радости большой жизни</span>
+          {/* Подписи двух коллажей Полины: одинаковые небольшие рукописные сердечки завершают утверждённый текст, бумажные карточки остаются на прежних местах. */}
+          <span className="collage-note collage-note--together">Маленькие радости большой жизни <span className="collage-note__heart" aria-hidden="true">♡</span></span>
           {secondCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
+          {/* Декор второго коллажа Полины: лента, шар и букет занимают свободные поля у снимков 17, 15 и 18; нижние лента с подарком остаются у снимка 08. */}
           <img className="collage__ribbon collage__ribbon--together" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__accent collage__accent--dog-balloon" src={decorPath('balloon-milk-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__accent collage__accent--sea-bouquet" src={decorPath('lavender-bouquet.webp')} alt="" aria-hidden="true" loading="lazy" />
+          <img className="collage__ribbon collage__ribbon--gift" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__lavender" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
@@ -169,6 +176,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <PaperConfetti placement="letter" />
           {/* У письма показывается снимок 04 с двумя женщинами; снимок 05 остаётся только в слайдере. */}
           <PhotoPrint item={photo('04')} onOpen={onOpenPhoto} className="final-letter__photo" />
+          {/* Переход от слайдера к письму: прозрачная лаванда заполняет свободное поле справа от снимка, не закрывая лица и текст. */}
+          <img className="final-letter__transition-lavender" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" loading="lazy" />
           <article className="final-letter__paper">
             <span className="paper-tape final-letter__tape" aria-hidden="true" />
             <div className="final-letter__text">{letterParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>

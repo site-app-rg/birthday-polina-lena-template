@@ -815,3 +815,54 @@ svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke
 .surprise-video-frame{width:fit-content;max-width:100%;margin:0 auto;padding:7px;border:1px solid #DFD2BD;background:#FFFCF5;box-shadow:0 10px 22px #5C526536,0 2px 5px #5C526522;transform:rotate(.5deg)}
 .surprise-video{display:block;width:auto;max-width:100%;height:auto;max-height:min(62svh,560px);margin:0;background:#DFD2BD;object-fit:contain}
 @media(max-width:350px){.surprise-card{padding:24px 12px 15px}.surprise-card__note{margin:35px 17px 13px}}
+
+/* Финальная расстановка декора Полины: утверждённые ассеты заполняют свободные поля у фотографий, остаются позади карточек и не принимают нажатия. Размеры заданы относительно мобильной области каждого раздела. */
+.cover-decor--balloon{top:1%;left:-2%;width:24%}
+.cover-decor--balloons{top:-2%;right:-1%;width:38%}
+.cover-decor--lavender-composition{right:-5%;bottom:7%;width:39%}
+.album-decor--gift{left:5%;bottom:6%;width:20%}
+.collage__accent{position:absolute;z-index:1;display:block;height:auto;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(2px 5px 6px #5C52652b)}
+.collage__accent--lion-bouquet{top:min(69vw,449px);left:5%;width:25%;transform:rotate(-15deg)}
+.collage__accent--friends-balloons{top:min(132vw,858px);right:2%;width:25%}
+.collage--together .collage__lavender{top:min(36vw,234px);right:2%;bottom:auto;width:22%;transform:rotate(14deg)}
+.collage--together .collage__ribbon--together{top:min(75vw,488px);left:-2%;bottom:auto;width:30%;transform:rotate(67deg)}
+.collage__accent--dog-balloon{top:min(131vw,852px);right:3%;width:19%}
+.collage__accent--sea-bouquet{top:min(198vw,1287px);right:1%;width:20%;transform:rotate(15deg)}
+.collage--together .collage__ribbon--gift{z-index:1;top:auto;right:auto;bottom:3%;left:-4%;width:36%;transform:rotate(-25deg)}
+.collage--together .collage__gift{left:2%;bottom:0;width:25%}
+.collage--transition .collage__ribbon{right:-3%}
+.final-letter__transition-lavender{position:absolute;z-index:1;top:7%;right:1%;display:block;width:27%;height:auto;pointer-events:none;transform:rotate(12deg)}
+.final-letter__lavender{z-index:1;right:1%;bottom:6%;width:17%;max-height:none;transform:rotate(18deg)}
+.final-letter__ribbon{bottom:4%}
+.envelope-section__gift{right:5%;bottom:5vw;width:28%}
+@media(max-width:700px){
+  .cover-decor--balloon{top:1%;left:0;width:22%}
+  .cover-decor--balloons{top:-2%;right:-2%;width:35%}
+  .cover-decor--lavender-composition{display:none}
+  .album-decor--gift{left:5%;bottom:6%;width:27%}
+  .final-letter{padding-bottom:136px}
+  .final-letter__transition-lavender{top:62px;right:0;width:28%}
+  .final-letter__lavender{right:3%;bottom:8px;width:21%}
+  .final-letter__ribbon{left:-15%;bottom:18px;width:58%}
+  .envelope-section__gift{right:5%;bottom:5vw;width:32%}
+}
+@media(max-width:350px){
+  .album-decor--gift,.album-decor--lavender-bouquet{display:none}
+  .collage__accent--lion-bouquet{left:3%;width:23%}
+  .collage__accent--friends-balloons{right:0;width:23%}
+  .collage__accent--sea-bouquet{right:0;width:18%}
+  .final-letter__transition-lavender{right:0;width:25%}
+}
+
+/* Малые акценты: одинаковое сердечко завершает обе подписи коллажей, а на подложке видео тонкие сердечки и прозрачная лаванда занимают только свободные поля. */
+.collage-note__heart{display:inline-block;margin-left:2px;color:#927B9D;font:1.25em/0.8 'Marck Script',cursive;vertical-align:-2px;transform:rotate(-11deg)}
+.surprise-card__doodle{position:absolute;z-index:1;display:block;pointer-events:none;user-select:none}
+.surprise-card__doodle--heart-one,.surprise-card__doodle--heart-two,.surprise-card__doodle--heart-three{font-family:'Marck Script',cursive;line-height:1;color:#927B9D}
+.surprise-card__doodle--heart-one{top:29px;left:4%;font-size:29px;transform:rotate(-13deg)}
+.surprise-card__doodle--heart-two{top:22%;right:2%;font-size:20px;color:#B5A3C7;transform:rotate(15deg)}
+.surprise-card__doodle--heart-three{top:54%;right:2%;font-size:24px;transform:rotate(-8deg)}
+.surprise-card__doodle--lavender-one{top:42%;left:1%;width:8%;max-width:31px;height:auto;opacity:.88;transform:rotate(-16deg)}
+@media(min-width:701px){
+  .final-letter{padding-bottom:235px}
+  .final-letter__lavender{right:9%;bottom:1%;width:12%}
+}
