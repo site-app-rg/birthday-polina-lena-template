@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import type { AlbumPhoto } from '../data/album'
-import { albumPhotos, letterParagraphs } from '../data/album'
+import { albumPhotos, childhoodPhotos, firstCollagePhotos, secondCollagePhotos, letterParagraphs } from '../data/album'
 import { PaperConfetti } from './PaperConfetti'
 import { HandDrawnFlower } from './HandDrawnFlower'
 import { AlbumScrollHint } from './AlbumScrollHint'
+import { PhotoSlider } from './PhotoSlider'
 
 type AlbumProps = {
   onBack: () => void
@@ -76,12 +77,12 @@ function AlbumSequence({ onOpenPhoto, modalOpen }: Pick<AlbumProps, 'onOpenPhoto
             <HandDrawnFlower className="album-book__flower album-book__flower--bottom" />
           </div>
           <div className="book-page book-page--right album-book__under" inert={!secondVisible} aria-hidden={!secondVisible}>
-            <PhotoPrint item={photo('03')} onOpen={onOpenPhoto} className="book-photo book-photo--first" />
-            <PhotoPrint item={photo('04')} onOpen={onOpenPhoto} className="book-photo book-photo--second" />
+            <PhotoPrint item={childhoodPhotos[2]} onOpen={onOpenPhoto} className="book-photo book-photo--first" />
+            <PhotoPrint item={childhoodPhotos[3]} onOpen={onOpenPhoto} className="book-photo book-photo--second" />
           </div>
           <div className="book-page book-page--right album-book__leaf" inert={secondVisible} aria-hidden={secondVisible}>
-            <PhotoPrint item={photo('01')} onOpen={onOpenPhoto} className="book-photo book-photo--first" />
-            <PhotoPrint item={photo('02')} onOpen={onOpenPhoto} className="book-photo book-photo--second" />
+            <PhotoPrint item={childhoodPhotos[0]} onOpen={onOpenPhoto} className="book-photo book-photo--first" />
+            <PhotoPrint item={childhoodPhotos[1]} onOpen={onOpenPhoto} className="book-photo book-photo--second" />
           </div>
           <span className="album-book__binding" aria-hidden="true" />
         </div>
@@ -127,27 +128,20 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
         <section className="collage collage--transition" aria-label="Тёплые моменты">
           <PaperConfetti placement="transition" />
           <span className="collage-note collage-note--transition">Тёплые<br />мгновения <HandDrawnFlower className="collage-note__flower" /></span>
-          <PhotoPrint item={photo('12')} caption="♡" onOpen={onOpenPhoto} className="collage-photo collage-photo--12" />
-          <PhotoPrint item={photo('14')} onOpen={onOpenPhoto} className="collage-photo collage-photo--14" />
-          <PhotoPrint item={photo('15')} caption="И ещё столько впереди ♡" onOpen={onOpenPhoto} className="collage-photo collage-photo--15" />
+          {firstCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
           <img className="collage__ribbon collage__ribbon--transition" src={decorPath('ribbon-long-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
         <section className="collage collage--together" aria-label="Воспоминания вместе">
           <PaperConfetti placement="together" />
-          <PhotoPrint item={photo('06')} onOpen={onOpenPhoto} className="collage-photo collage-photo--06" />
-          <PhotoPrint item={photo('07')} onOpen={onOpenPhoto} className="collage-photo collage-photo--07" />
           <span className="collage-note collage-note--together">Друзья<br />всегда рядом ♡</span>
-          <PhotoPrint item={photo('09')} onOpen={onOpenPhoto} className="collage-photo collage-photo--09" />
-          <PhotoPrint item={photo('10')} caption="Вместе" onOpen={onOpenPhoto} className="collage-photo collage-photo--10" />
-          <PhotoPrint item={photo('13')} onOpen={onOpenPhoto} className="collage-photo collage-photo--13" />
-          <PhotoPrint item={photo('11')} caption="Тёплые моменты" onOpen={onOpenPhoto} className="collage-photo collage-photo--11" />
+          {secondCollagePhotos.map((item, index) => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} className={`collage-photo collage-photo--slot-${index + 1}`} />)}
           <img className="collage__ribbon collage__ribbon--together" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__gift" src={decorPath('gift-box-provence.webp')} alt="" aria-hidden="true" loading="lazy" />
           <img className="collage__lavender" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" loading="lazy" />
         </section>
 
-        <section className="extra-gallery" aria-label="Все фотографии Полины"><h2>Наши фотографии</h2><div className="extra-gallery__grid">{albumPhotos.filter(item => item.id === '08' || Number(item.id) >= 16).map(item => <PhotoPrint key={item.id} item={item} onOpen={onOpenPhoto} />)}</div></section>
+        <PhotoSlider onOpenPhoto={onOpenPhoto} />
         <section className="final-letter" ref={letterRef} aria-label="Поздравительное письмо">
           <PaperConfetti placement="letter" />
           <PhotoPrint item={photo('05')} onOpen={onOpenPhoto} className="final-letter__photo" />

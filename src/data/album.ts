@@ -2,6 +2,12 @@ export type AlbumPhoto = { id: string; src: string; alt: string; position?: stri
 export const mediaPath = (filename: string) => `${import.meta.env.BASE_URL}media/${filename}`
 // Все 23 фотографии Полины подключены к просмотру альбома, включая снимок 13.
 export const albumPhotos: AlbumPhoto[] = Array.from({ length: 23 }, (_, index) => { const id = String(index + 1).padStart(2, '0'); return { id, src: mediaPath(`polina-${id}.jpg`), alt: `Фотография Полины ${index + 1}` } })
+// Порядок снимков в разделах Полины: четыре детских фото остаются на двух перелистываемых страницах, два коллажа и ручной слайдер получают утверждённые подборки.
+const orderedPhotos = (ids: string[]) => ids.map((id) => albumPhotos.find((item) => item.id === id)!)
+export const childhoodPhotos = orderedPhotos(['13', '19', '11', '14'])
+export const firstCollagePhotos = orderedPhotos(['20', '21', '01', '03'])
+export const secondCollagePhotos = orderedPhotos(['23', '17', '15', '18', '08'])
+export const sliderPhotos = orderedPhotos(['02', '04', '05', '06', '07', '09', '10', '12', '22'])
 export const surprisePhoto = albumPhotos[22]
 export const mainSong = ''
 export const surpriseSong = ''

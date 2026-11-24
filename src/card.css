@@ -718,3 +718,34 @@ button:focus-visible{outline-color:#927B9D}
 .cover-open::before{background:linear-gradient(110deg,transparent 39%,#FFFCF580 46%,#FFFCF5ed 50%,#FFFCF580 54%,transparent 61%)}
 /* Фото на первом экране Полины: снимок целиком помещается в прежнюю бумажную рамку, без изменения её размера, наклона и оформления. */
 .cover-polaroid .cover-polaroid__portrait{object-fit:contain;background:#FFFCF5}
+
+/* Компоновка снимков Полины: альбом листается как прежде, два коллажа собираются из бумажных карточек без пустых промежутков, а ручной слайдер занимает место прежней сетки. */
+.album-sequence{height:155svh}
+.collage--transition,.collage--together{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:13px 12px;width:min(100%,660px);height:auto;margin:26px auto 0;padding:72px 18px 82px}
+.collage--together{margin-top:8px;padding-bottom:100px}
+.collage .collage-photo{position:relative;top:auto;right:auto;bottom:auto;left:auto;width:100%;padding:6px 6px 3px}
+.collage .collage-photo .photo-print__image{height:auto;background:transparent}
+.collage .collage-photo .photo-print__image img{display:block;width:100%;height:auto;object-fit:contain}
+.collage .collage-photo--slot-1{transform:rotate(-4deg)}
+.collage .collage-photo--slot-2{transform:rotate(3deg)}
+.collage .collage-photo--slot-3{transform:rotate(2deg)}
+.collage .collage-photo--slot-4{transform:rotate(-3deg)}
+.collage--together .collage-photo--slot-5{grid-column:1/-1;justify-self:center;width:58%;transform:rotate(2deg)}
+.collage .collage-note{top:9px;left:62px;right:auto;width:auto;max-width:65%;font-size:clamp(18px,5vw,26px);transform:rotate(-4deg)}
+.collage--together .collage-note{max-width:70%}
+.collage--transition .collage__ribbon{right:-6%;bottom:0;width:46%}
+.collage--together .collage__ribbon{top:auto;left:-10%;bottom:5%;width:42%}
+.collage--together .collage__gift{left:0;bottom:0;width:22%}
+.collage--together .collage__lavender{right:-7%;bottom:0;width:30%}
+.photo-slider{max-width:680px;margin:12px auto 50px;padding:58px 10px 25px;text-align:center}
+.photo-slider h2{margin:0 0 18px;color:#5C5265;font:38px/1.15 'Marck Script',cursive}
+.photo-slider__row{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:center;gap:4px}
+.photo-slider__stage{display:grid;place-items:center;min-height:min(52svh,460px)}
+.photo-slider__print{width:max-content;max-width:100%;padding:8px;animation:photo-slider-in .35s ease both}
+.photo-slider__print .photo-print__image{display:block;width:max-content;max-width:100%;height:auto;background:transparent}
+.photo-slider__print img{display:block;width:auto;max-width:min(70vw,420px);max-height:min(48svh,420px);height:auto;object-fit:contain}
+.photo-slider__arrow{display:grid;place-items:center;width:42px;height:48px;border:1px solid #B5A3C7;border-radius:50%;background:#FFFCF5;box-shadow:0 4px 10px #5C526529;color:#5C5265;font:34px/1 Georgia,serif;cursor:pointer}
+.photo-slider__count{margin:10px 0 0;color:#60564D;font-size:16px}
+@keyframes photo-slider-in{from{opacity:.35;transform:translateX(12px) rotate(1deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
+@media(max-width:430px){.collage--transition,.collage--together{gap:11px 8px;padding-right:12px;padding-left:12px}.photo-slider h2{font-size:34px}.photo-slider__stage{min-height:47svh}}
+@media(prefers-reduced-motion:reduce){.photo-slider__print{animation:none}}
