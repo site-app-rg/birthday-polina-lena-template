@@ -877,3 +877,10 @@ svg.album-book__ornament{overflow:visible;stroke:#927B9D;stroke-width:1.8;stroke
 .paper-confetti--slider-gap .paper-confetti__piece--1{background:#FFFCF5;opacity:.78}
 .paper-confetti--slider-gap .paper-confetti__piece--2{background:#9DA88B}
 .paper-confetti--slider-gap .paper-confetti__piece:nth-child(4n){background:#D5B0AE}
+
+/* Три точечные правки коллажей Полины на телефоне: снимок со львом опущен ниже лица девочки, бумажная подпись освобождает лицо именинницы, а лента у снимка с котом повёрнута в свободное поле. Размеры фотографий и наклейки сохранены. */
+@media(max-width:700px){
+  .collage--transition .collage-photo--slot-2{top:calc(min(47vw,306px) + clamp(20px,6.4vw,30px))}
+  .collage--together .collage-note--together{top:0;right:1%;transform:rotate(1deg)}
+  .collage--together .collage__ribbon--together{left:2%;transform:rotate(112deg)}
+}
