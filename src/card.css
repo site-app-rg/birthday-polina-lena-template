@@ -689,6 +689,7 @@ button:focus-visible{outline-color:#927B9D}
 .final-letter__paper{background:repeating-linear-gradient(92deg,transparent 0 5px,#60564D08 5px 6px),#FFFCF5;border-color:#DFD2BD;color:#60564D;box-shadow:0 24px 38px #5C52653a,7px 9px 0 #DFD2BD,9px 12px 11px #5C526526}
 .final-letter__text{color:#60564D}
 .final-letter__text p:first-child,.final-letter__paper h2{color:#5C5265}
+.final-letter__text .final-letter__closing{font:24px/1.13 'Marck Script','Segoe Script',cursive;color:#5C5265}
 .card-story--reading-letter::before{background:#F7F1E7}
 .envelope-section__arrow,.album-scroll-hint{color:#927B9D}
 .album-scroll-hint__arrow{filter:drop-shadow(0 1px 1px #FFFCF5)}

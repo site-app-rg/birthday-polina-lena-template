@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import type { AlbumPhoto } from '../data/album'
 import { albumPhotos, childhoodPhotos, firstCollagePhotos, secondCollagePhotos, letterParagraphs } from '../data/album'
@@ -180,7 +180,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
           <img className="final-letter__transition-lavender" src={decorPath('lavender-composition.webp')} alt="" aria-hidden="true" loading="lazy" />
           <article className="final-letter__paper">
             <span className="paper-tape final-letter__tape" aria-hidden="true" />
-            <div className="final-letter__text">{letterParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+            {/* Письмо Полины: исходное разделение утверждённой редакции на абзацы и строки, две заключительные строки выделены тем же рукописным шрифтом, что и вступление. */}
+            <div className="final-letter__text">{letterParagraphs.map((paragraph, index) => <p key={index} className={index === 5 ? 'final-letter__closing' : undefined}>{paragraph.split('\n').map((line, lineIndex) => <Fragment key={lineIndex}>{lineIndex > 0 && <br />}{line}</Fragment>)}</p>)}</div>
             <span className="final-letter__heart" aria-hidden="true">♡</span>
           </article>
           <img className="final-letter__ribbon" src={decorPath('ribbon-curl-lavender.webp')} alt="" aria-hidden="true" loading="lazy" />
