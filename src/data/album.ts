@@ -11,8 +11,9 @@ export const secondCollagePhotos = orderedPhotos(['23', '17', '15', '18', '08'])
 // Снимок 04 перенесён к письму; слайдер Полины начинается с фото 22 и содержит восемь снимков без дублей.
 export const sliderPhotos = orderedPhotos(['22', '02', '05', '06', '07', '09', '10', '12'])
 export const surprisePhoto = albumPhotos[22]
-export const introSong = mediaPath('birthday-intro.mp3')
-export const mainSong = mediaPath('birthday-background.mp3')
+// Тихие копии музыки Полины дают одинаковое относительное снижение громкости на компьютере и в Safari iPhone, где настройка громкости элемента может игнорироваться; исходные файлы сохранены.
+export const introSong = mediaPath('birthday-intro-quiet.mp3')
+export const mainSong = mediaPath('birthday-background-quiet.mp3')
 // Утверждённый текст письма Полины: переносы внутри вступления и заключения сохранены; неразрывные пробелы удерживают эмодзи рядом с предшествующими словами.
 export const letterParagraphs = [
 'Дорогая моя!\u00a0❤️\nХочу поздравить тебя с днём рождения!\u00a0🎉',
