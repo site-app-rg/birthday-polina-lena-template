@@ -217,8 +217,8 @@ export function Album({ onBack, onOpenPhoto, onOpenSurprise, onToggleMusic, isMu
         </section>
       </div>
 
-      {/* Круглая кнопка музыки из открытки Лены управляет обеими композициями Полины на всех страницах после открытия. */}
-      <div className={`music-control${letterVisible ? ' music-control--letter' : ''}`}>
+      {/* Круглая кнопка музыки из открытки Лены закреплена справа внизу при любой прокрутке, включая письмо; её управление обеими песнями Полины сохранено. */}
+      <div className="music-control">
         <button type="button" onClick={onToggleMusic} aria-label={isMusicPlaying ? 'Приостановить музыку' : 'Включить музыку'} title={isMusicPlaying ? 'Приостановить музыку' : 'Включить музыку'}>
           {isMusicPlaying ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor" /></svg> : <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z" fill="currentColor" /></svg>}
         </button>

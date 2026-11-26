@@ -99,7 +99,7 @@ export function VintageTelephone({ onActivityChange }: { onActivityChange: (acti
     <p className="vintage-telephone__hint" aria-live="polite">{hint}</p>
     {error && <p className="vintage-telephone__error" role="status">{error}</p>}
     <audio ref={ring} src={media('vintage-ring.wav')} preload="auto" />
-    {/* Тихая копия мелодии телефона Полины снижена на 30% в самом файле, включая браузеры без программной регулировки громкости. */}
-    <audio ref={melody} src={media('put-quiet.mp3')} preload="metadata" onEnded={() => { playbackState.current = 'finished'; setPlayback('finished'); activity.current(false) }} />
+    {/* Копия мелодии телефона Полины создана из оригинала с итоговым уровнем 49%, чтобы снижение действовало и на iPhone. Звонок остаётся прежним. */}
+    <audio ref={melody} src={media('put-49.mp3')} preload="metadata" onEnded={() => { playbackState.current = 'finished'; setPlayback('finished'); activity.current(false) }} />
   </section>
 }

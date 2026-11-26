@@ -539,8 +539,6 @@ button:focus-visible{outline:3px solid #ad4f32;outline-offset:4px}
 .final-letter__text p:first-child{font:24px/1.13 'Marck Script','Segoe Script',cursive;margin-bottom:17px;color:#8d3329}
 .final-letter__text p:last-child{margin-bottom:6px}
 .final-letter__heart{font:29px/1 'Marck Script',cursive;margin-top:8px}
-.music-control--letter{top:max(12px,env(safe-area-inset-top));bottom:auto;align-items:flex-start}
-.music-control--letter .music-control__message{position:absolute;right:0;top:56px;width:220px}
 /* A reading toolbar masks the scrolling paper only once it reaches the controls. */
 .card-story--reading-letter::before{content:'';position:fixed;z-index:39;top:0;left:0;right:0;height:calc(max(12px,env(safe-area-inset-top)) + 60px);background:#f8e8d6;pointer-events:none}
 @media(max-width:700px){

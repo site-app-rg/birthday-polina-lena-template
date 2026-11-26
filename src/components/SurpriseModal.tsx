@@ -36,7 +36,8 @@ export function SurpriseModal({ onClose, onVideoActivityChange }: SurpriseModalP
         <img className="surprise-card__doodle surprise-card__doodle--lavender-one" src={`${import.meta.env.BASE_URL}decor/lavender-bouquet.webp`} alt="" aria-hidden="true" />
         <p className="surprise-card__note">Оставайся такой же озорной и жизнерадостной!</p>
         <div className="surprise-video-frame">
-          <video ref={videoRef} className="surprise-video" src={`${import.meta.env.BASE_URL}media/birthday-video.mp4`} controls playsInline preload="metadata" tabIndex={0} onPlay={() => onVideoActivityChange(true)} onPause={() => onVideoActivityChange(false)} onEnded={() => onVideoActivityChange(false)} />
+          {/* Видео Полины сохранено без перекодирования изображения; в рабочей копии звуковая дорожка снижена до 85%. */}
+          <video ref={videoRef} className="surprise-video" src={`${import.meta.env.BASE_URL}media/birthday-video-85.mp4`} controls playsInline preload="metadata" tabIndex={0} onPlay={() => onVideoActivityChange(true)} onPause={() => onVideoActivityChange(false)} onEnded={() => onVideoActivityChange(false)} />
         </div>
       </div>
     </div>
