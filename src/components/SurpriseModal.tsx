@@ -2,24 +2,14 @@ import { useEffect, useRef } from 'react'
 
 type SurpriseModalProps = {
   onClose: () => void
-  onToggleAudio: () => void
-  onSeekAudio: (seconds: number) => void
-  isAudioPlaying: boolean
-  duration: number
-  currentTime: number
-  audioMessage: string
+  onVideoActivityChange: (active: boolean) => void
 }
-
-function timeLabel(seconds: number) {
-  if (!Number.isFinite(seconds) || seconds < 0) return '0:00'
-  return `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`
-}
-
-export function SurpriseModal({ onClose, onToggleAudio, onSeekAudio, isAudioPlaying, duration, currentTime, audioMessage }: SurpriseModalProps) {
-  void onToggleAudio; void onSeekAudio; void isAudioPlaying; void duration; void currentTime; void timeLabel
+export function SurpriseModal({ onClose, onVideoActivityChange }: SurpriseModalProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButton = useRef<HTMLButtonElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   useEffect(() => { closeButton.current?.focus() }, [])
+  useEffect(() => () => { videoRef.current?.pause(); onVideoActivityChange(false) }, [onVideoActivityChange])
 
   function keepFocus(event: React.KeyboardEvent) {
     if (event.key !== 'Tab' || !dialogRef.current) return
@@ -46,9 +36,8 @@ export function SurpriseModal({ onClose, onToggleAudio, onSeekAudio, isAudioPlay
         <img className="surprise-card__doodle surprise-card__doodle--lavender-one" src={`${import.meta.env.BASE_URL}decor/lavender-bouquet.webp`} alt="" aria-hidden="true" />
         <p className="surprise-card__note">Оставайся такой же озорной и жизнерадостной!</p>
         <div className="surprise-video-frame">
-          <video className="surprise-video" src={`${import.meta.env.BASE_URL}media/birthday-video.mp4`} controls playsInline preload="metadata" tabIndex={0} />
+          <video ref={videoRef} className="surprise-video" src={`${import.meta.env.BASE_URL}media/birthday-video.mp4`} controls playsInline preload="metadata" tabIndex={0} onPlay={() => onVideoActivityChange(true)} onPause={() => onVideoActivityChange(false)} onEnded={() => onVideoActivityChange(false)} />
         </div>
-        {audioMessage && <p className="surprise-card__message" role="status">{audioMessage}</p>}
       </div>
     </div>
   )

@@ -10,6 +10,7 @@ export function VintageTelephone({ onActivityChange }: { onActivityChange: (acti
   const melody = useRef<HTMLAudioElement>(null)
   const timer = useRef<number | null>(null)
   const started = useRef(false)
+  const playbackState = useRef<Playback>('idle')
   const activity = useRef(onActivityChange)
   const [ringing, setRinging] = useState(false)
   const [playback, setPlayback] = useState<Playback>('idle')
@@ -23,6 +24,19 @@ export function VintageTelephone({ onActivityChange }: { onActivityChange: (acti
     if (ring.current) ring.current.currentTime = 0
     setRinging(false)
   }, [])
+
+  // При запуске видео телефон Полины сразу прекращает звонок или мелодию, чтобы два источника звука не звучали одновременно.
+  useEffect(() => {
+    const stopForVideo = () => {
+      stopRing()
+      melody.current?.pause()
+      if (melody.current) melody.current.currentTime = 0
+      if (playbackState.current === 'playing') { playbackState.current = 'finished'; setPlayback('finished') }
+      activity.current(false)
+    }
+    window.addEventListener('polina-video-start', stopForVideo)
+    return () => window.removeEventListener('polina-video-start', stopForVideo)
+  }, [stopRing])
 
   useEffect(() => {
     const target = section.current
@@ -57,17 +71,23 @@ export function VintageTelephone({ onActivityChange }: { onActivityChange: (acti
     setError('')
     const audio = melody.current
     if (!audio) return
-    if (playback === 'playing') {
+    if (playbackState.current === 'playing') {
       audio.pause()
       audio.currentTime = 0
-      setPlayback('finished')
+      playbackState.current = 'finished'; setPlayback('finished')
       activity.current(false)
       return
     }
     audio.currentTime = 0
     activity.current(true)
-    try { await audio.play(); setPlayback('playing') }
-    catch { setError('Не удалось включить мелодию. Нажми ещё раз.'); activity.current(false) }
+    playbackState.current = 'playing'; setPlayback('playing')
+    try { await audio.play() }
+    catch {
+      if (playbackState.current === 'playing') {
+        playbackState.current = 'idle'; setPlayback('idle')
+        setError('Не удалось включить мелодию. Нажми ещё раз.'); activity.current(false)
+      }
+    }
   }
 
   const hint = playback === 'playing' ? 'Нажми, чтобы остановить' : playback === 'finished' ? 'Прослушать ещё раз' : 'Нажми, чтобы ответить'
@@ -79,6 +99,6 @@ export function VintageTelephone({ onActivityChange }: { onActivityChange: (acti
     <p className="vintage-telephone__hint" aria-live="polite">{hint}</p>
     {error && <p className="vintage-telephone__error" role="status">{error}</p>}
     <audio ref={ring} src={media('vintage-ring.wav')} preload="auto" />
-    <audio ref={melody} src={media('put.mp3')} preload="metadata" onEnded={() => { setPlayback('finished'); activity.current(false) }} />
+    <audio ref={melody} src={media('put.mp3')} preload="metadata" onEnded={() => { playbackState.current = 'finished'; setPlayback('finished'); activity.current(false) }} />
   </section>
 }
